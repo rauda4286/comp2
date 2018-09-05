@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mac.com21.Pojos.Chiste;
-
+import com.example.mac.com21.R;
 
 
 import java.util.List;

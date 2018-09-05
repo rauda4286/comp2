@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.mac.com21.Pojos.Chiste;
 
+import com.example.mac.com21.R;
 import com.example.mac.com21.model.EndPointInterface;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;

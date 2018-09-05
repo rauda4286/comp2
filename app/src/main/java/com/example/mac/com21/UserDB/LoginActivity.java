@@ -9,20 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mac.com21.Activity.MainActivity;
 import com.example.mac.com21.DBHelper.SqliteHelper;
 import com.example.mac.com21.Pojos.User;
+import com.example.mac.com21.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     //Declaration EditTexts
     EditText editTextEmail;
     EditText editTextPassword;
-
-    //Declaration TextInputLayout
-    TextInputLayout textInputLayoutEmail;
-    TextInputLayout textInputLayoutPassword;
 
     //Declaration Button
     Button buttonLogin;
@@ -55,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //Check Authentication is successful or not
                     if (currentUser != null) {
-                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(buttonLogin, "LogIn Exitoso", Snackbar.LENGTH_LONG).show();
 
                         //User Logged in Successfully Launch You home screen activity
                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
@@ -65,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
 
                         //User Logged in Failed
-                        Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(buttonLogin, "Tuvimos un problema", Snackbar.LENGTH_LONG).show();
 
                     }
                 }
@@ -94,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
     private void initViews() {
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
-        textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
     }
@@ -112,23 +108,32 @@ public class LoginActivity extends AppCompatActivity {
         //Handling validation for Email field
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             valid = false;
-            textInputLayoutEmail.setError("Please enter valid email!");
+            editTextEmail.setError("Ingrese Email valido!");
         } else {
             valid = true;
-            textInputLayoutEmail.setError(null);
+            editTextEmail.setError(null);
         }
+
+
+        if (editTextEmail == null || editTextPassword == null){
+            Toast.makeText(this, "Porfavor no deje campos vacios", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
 
         //Handling validation for Password field
         if (Password.isEmpty()) {
             valid = false;
-            textInputLayoutPassword.setError("Please enter valid password!");
+            editTextPassword.setError("Ingrese Contraseña valida!");
         } else {
             if (Password.length() > 5) {
                 valid = true;
-                textInputLayoutPassword.setError(null);
+                editTextPassword.setError(null);
             } else {
                 valid = false;
-                textInputLayoutPassword.setError("Password is to short!");
+                editTextPassword.setError("Contraseña muy corta!");
             }
         }
 

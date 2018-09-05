@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.mac.com21.DBHelper.SqliteHelper;
 import com.example.mac.com21.Pojos.User;
-
+import com.example.mac.com21.R;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -89,9 +89,6 @@ public class RegisterActivity extends AppCompatActivity {
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextUserName = (EditText) findViewById(R.id.editTextUserName);
-        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
-        textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
-        textInputLayoutUserName = (TextInputLayout) findViewById(R.id.textInputLayoutUserName);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
 
     }
@@ -108,37 +105,37 @@ public class RegisterActivity extends AppCompatActivity {
         //Handling validation for UserName field
         if (UserName.isEmpty()) {
             valid = false;
-            textInputLayoutUserName.setError("Please enter valid username!");
+            editTextUserName.setError("Ingrese Usuario valido!");
         } else {
             if (UserName.length() > 5) {
                 valid = true;
-                textInputLayoutUserName.setError(null);
+                editTextUserName.setError(null);
             } else {
                 valid = false;
-                textInputLayoutUserName.setError("Username is to short!");
+                editTextUserName.setError("Usuario demasiado corto!");
             }
         }
 
         //Handling validation for Email field
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             valid = false;
-            textInputLayoutEmail.setError("Please enter valid email!");
+            editTextEmail.setError("inglese Email valido!");
         } else {
             valid = true;
-            textInputLayoutEmail.setError(null);
+            editTextEmail.setError(null);
         }
 
         //Handling validation for Password field
         if (Password.isEmpty()) {
             valid = false;
-            textInputLayoutPassword.setError("Please enter valid password!");
+            editTextPassword.setError("Ingrese contraseña valida!");
         } else {
             if (Password.length() > 5) {
                 valid = true;
-                textInputLayoutPassword.setError(null);
+                editTextPassword.setError(null);
             } else {
                 valid = false;
-                textInputLayoutPassword.setError("Password is to short!");
+                editTextPassword.setError("Contraseña muy corta!");
             }
         }
 

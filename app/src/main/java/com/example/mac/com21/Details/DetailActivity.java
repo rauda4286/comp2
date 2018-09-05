@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.mac.com21.Pojos.Chiste;
+import com.example.mac.com21.R;
 import com.example.mac.com21.speack.SpeakRequest;
 
 public class DetailActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class DetailActivity extends AppCompatActivity {
 
         //imagenExtendida = (ImageView) findViewById(R.id.imagen_extendida);
 
-        cargarContenido();
+        //cargarContenido();
 
         if(speakRequest == null) {
             speakRequest = new SpeakRequest(this);
@@ -39,11 +40,18 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private void cargarContenido() {
+
         Glide.with(imagenExtendida.getContext())
                 .load(IMAGE_PREFIX+chiste.getImage())
                 .placeholder(R.mipmap.ic_launcher)
                 .into(imagenExtendida);
+
+
+
     }
+
+
+
 
     @Override
     protected void onPause() {
